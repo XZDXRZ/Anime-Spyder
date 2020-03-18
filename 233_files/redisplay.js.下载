@@ -1,2 +1,0 @@
-(function($){$(function(){if(document.body.scrollWidth!=$('.header').width())
-$('.header,.footer,#breadcrumb,.footer_menu').width(document.body.scrollWidth);})})(jQuery)

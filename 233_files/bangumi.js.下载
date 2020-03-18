@@ -1,6 +1,0 @@
-(function($){if(!$('#bangumi'))
-return;var url='./bangumi.txt';var week=new Array;week[0]=new Date().getDay();week[1]=(week[0]-1)==-1?6:(week[0]-1);week[2]=(week[0]+1)==7?0:(week[0]+1);$(function(){$.get(url,{rand:Math.random()},function(d){var l=d.split('\r\n');var l_r=new Array;var str='';var chinaWeek=['星期日（日）','星期一（月）','星期二（火）','星期三（水）','星期四（木）','星期五（金）','星期六（土）'];for(var i=0;i<l.length;i++){var k=l[i].split(',');if(week[1]==k[0]){l_r[0]=k;}else if(week[0]==k[0]){l_r[1]=k;}else if(week[2]==k[0]){l_r[2]=k;}}
-for(var i=0;i<l_r.length;i++){var k=l_r[i];var str=str+='<dl><dt'+(i==1?' class="red"':'')+'>'+chinaWeek[k[0]]+'</dt><dd>';for(var s=1;s<k.length;s++){var b=k[s].split('#');str+='<a href="search.php?keyword='+encodeURIComponent(b[1])+'">'+b[0]+'</a>';}
-str+='</dd></dl>';}
-$('#bangumi .block').html(str);});if(document.body.scrollWidth!=$('.header').width())
-$('.header,.footer,#breadcrumb,.footer_menu').width(document.body.scrollWidth);})})(jQuery)
