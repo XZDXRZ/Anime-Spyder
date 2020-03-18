@@ -1,8 +1,7 @@
-from bs4 import BeautifulSoup
-import requests as rq
-from func import *
+from anime import *
 
 if __name__=='__main__':
-    work('233')
-    #第一个参数：HTML文件名称
-    #第二个参数：输出文件名称
+    catch("	【动漫国字幕组】虚构推理")
+    #第一个参数：搜索关键词
+    #第二个参数：缓冲时间，根据网速设定，默认15秒
+    #第三个参数：输出文件，默认为output_file.txt
