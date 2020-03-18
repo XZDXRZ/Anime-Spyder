@@ -26,8 +26,10 @@ def work(file_name,output_name='output_file'):
             f.write(name[k-1].get_text()[2:]+'\n')
             f.write(i['href']+'\n\n')
         except TypeError:
+            print('TypeError!!!')
             continue
         except AttributeError:
+            print('AttributeError!!!')
             continue
         k+=1
     f.close()
