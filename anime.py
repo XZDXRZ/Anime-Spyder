@@ -53,6 +53,7 @@ def catch(key_word,time=15,output_name='output_file'):
         #print(soup.find_all(style="text-align:left;")[0].get_text())
         name = soup.find_all(style="text-align:left;")
         for i in soup.find_all(id='magnet'):
+            '''
             try:
                 #print(str(k)+' '+i['href'])
                 #print(name[k-1].get_text())
@@ -63,9 +64,14 @@ def catch(key_word,time=15,output_name='output_file'):
             except TypeError:
                 print('TypeError!!!')
                 continue
-            #except AttributeError:
-                #print('AttributeError!!!')
-                #continue
+            except AttributeError:
+                print('AttributeError!!!')
+                continue
+            '''
+            f.write('['+str(cnt)+']\n')
+            namelen=len(name[k-1].get_text())
+            f.write(name[k-1].get_text()[2:namelen-2]+'\n')
+            f.write(i['href']+'\n\n')
             k+=1
             cnt+=1
         f.close()
