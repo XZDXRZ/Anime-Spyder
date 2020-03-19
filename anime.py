@@ -31,9 +31,7 @@ def catch(key_word,time=15,output_name='output_file'):
     while True:
         page = get_page(key_word,pid,time)
         page.encode('utf-8')
-
         f=open(output_name+'.txt','a',encoding='utf-8')
-
         soup = BeautifulSoup(page,'lxml')
         k=1 # 当前页的循环变量
         name = soup.find_all(style="text-align:left;")
