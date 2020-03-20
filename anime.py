@@ -7,6 +7,8 @@ def get_page(key_word,page,t):
 
     # 浏览器设置
     options = webdriver.ChromeOptions()
+    prefs = {"profile.managed_default_content_settings.images": 2,'permissions.default.stylesheet':2}
+    options.add_experimental_option("prefs", prefs)
     options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36"')
     driver = webdriver.Chrome(chrome_options=options)
 
