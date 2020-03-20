@@ -36,15 +36,20 @@ def catch(key_word,time=20,output_name='output_file'):
         soup = BeautifulSoup(page,'lxml')
         # 获取总资源数
         if pid == 1:
-            text = soup.find_all('h2','title')[1].get_text()
+            total = soup.find_all('h2','title')
+            if len(total) <= 1:
+                print('ERROR: 请求失败，调高缓冲时间重试。')
+                break
+            print(len(total))
+            text = total[1].get_text()
             #print(text)
             tot = 0
             for s in text:
                 if ord(s)<=ord('9') and ord(s)>=ord('0'):
                     tot=tot*10+int(s)
             #print(tot)
-            print('总共'+str(tot)+'条资源')
-            f.write('总共'+str(tot)+'条资源\n\n')
+            print('总共'+str(tot)+'条资源。')
+            f.write('总共'+str(tot)+'条资源。\n\n')
         k=1 # 当前页的循环变量
         name = soup.find_all(style="text-align:left;")
         # 查找链接
