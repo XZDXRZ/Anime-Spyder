@@ -18,10 +18,11 @@ def get_page(key_word,page,t):
     # 返回网页源代码
     return driver.page_source
 
-def catch(key_word,time=15,output_name='output_file'):
+def catch(key_word,time=20,output_name='output_file'):
 
     cnt=1 # 总链接个数
     pid=1 # 总页数
+    tot = 0 # 总资源数
 
     # 清空输出文件
     f=open(output_name+'.txt','w',encoding='utf-8')
@@ -29,10 +30,21 @@ def catch(key_word,time=15,output_name='output_file'):
     f.close()
 
     while True:
-        page = get_page(key_word,pid,time)
+        page = get_page(key_word,pid,10)
         page.encode('utf-8')
         f=open(output_name+'.txt','a',encoding='utf-8')
         soup = BeautifulSoup(page,'lxml')
+        # 获取总资源数
+        if pid == 1:
+            text = soup.find_all('h2','title')[1].get_text()
+            #print(text)
+            tot = 0
+            for s in text:
+                if ord(s)<=ord('9') and ord(s)>=ord('0'):
+                    tot=tot*10+int(s)
+            #print(tot)
+            print('总共'+str(tot)+'条资源')
+            f.write('总共'+str(tot)+'条资源\n\n')
         k=1 # 当前页的循环变量
         name = soup.find_all(style="text-align:left;")
         # 查找链接
@@ -43,7 +55,6 @@ def catch(key_word,time=15,output_name='output_file'):
             f.write(i['href']+'\n\n')
             k+=1
             cnt+=1
-        f.close()
         # 只有一页的情况
         if len(soup.find_all('a','nextprev')) == 0:
             print("Page "+str(pid)+" OK!")
@@ -56,3 +67,7 @@ def catch(key_word,time=15,output_name='output_file'):
             break
         print("Page "+str(pid)+" OK!")
         pid+=1
+    if tot != cnt:
+        print('部分下载失败，请调高缓冲秒数重试。')
+        f.write('部分下载失败，请调高缓冲秒数重试。')
+    f.close()
