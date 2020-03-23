@@ -15,7 +15,7 @@ v2.1已支持多页。
 可以通过命令行操作：
 
 ```shell
-$ python main.py key_word [-t time] [-o output_file]
+$ python main.py "key_word" [-t time] [-o output_file]
 ```
 
 其中用方括号包围的为可选参数。
