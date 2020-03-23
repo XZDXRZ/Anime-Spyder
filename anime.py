@@ -43,7 +43,7 @@ def catch(key_word,time=20,output_name='output_file'):
                 print('ERROR: 请求失败，调高缓冲时间重试。')
                 break
             #print(len(total))
-            text = total[1].get_text()
+            text = total[1].get_text()[len(key_word)+10:]
             #print(text)
             tot = 0
             for s in text:

@@ -11,7 +11,7 @@ if __name__=='__main__':
             time = int(arg)
         elif op == '-o':
             out = arg
-    print(key_word,time,out)
+    print('"'+key_word+'"',time,out)
     if time == -1 and out == 'ERROR':
         catch(key_word)
     elif time != -1 and out == 'ERROR':
