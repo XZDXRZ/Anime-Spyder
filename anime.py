@@ -42,7 +42,7 @@ def catch(key_word,time=20,output_name='output_file'):
             if len(total) <= 1:
                 print('ERROR: 请求失败，调高缓冲时间重试。')
                 break
-            print(len(total))
+            #print(len(total))
             text = total[1].get_text()
             #print(text)
             tot = 0
@@ -74,7 +74,8 @@ def catch(key_word,time=20,output_name='output_file'):
             break
         print("Page "+str(pid)+" OK!")
         pid+=1
-    if tot != cnt:
+    #print(tot,'debug',cnt)
+    if tot != cnt-1:
         print('部分下载失败，请调高缓冲秒数重试。')
         f.write('部分下载失败，请调高缓冲秒数重试。')
     f.close()
